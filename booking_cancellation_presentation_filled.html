@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking Cancellation Risk - Management Presentation</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg2: #111827;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #2563eb;
+      --accent2: #f97316;
+      --good: #16a34a;
+      --bad: #dc2626;
+      --line: #e5e7eb;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; font-family: Inter, Arial, Helvetica, sans-serif; background: #e2e8f0; color: var(--text); }
+    .deck { scroll-snap-type: y mandatory; }
+    .slide {
+      min-height: 100vh;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      scroll-snap-align: start;
+      page-break-after: always;
+    }
+    .slide.dark {
+      background: linear-gradient(135deg, var(--bg), var(--bg2));
+      color: #f8fafc;
+    }
+    .slide.light {
+      background: #f8fafc;
+      color: var(--text);
+    }
+    .container { max-width: 1200px; margin: 0 auto; width: 100%; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; font-weight: 700; opacity: 0.8; margin-bottom: 14px; }
+    h1 { font-size: 3.4rem; line-height: 1.05; margin: 0 0 18px; }
+    h2 { font-size: 2.3rem; line-height: 1.1; margin: 0 0 24px; }
+    h3 { font-size: 1.2rem; margin: 0 0 10px; }
+    p { line-height: 1.55; }
+    p.lead { font-size: 1.25rem; line-height: 1.55; max-width: 920px; color: inherit; opacity: 0.92; }
+    .grid-4, .grid-3, .grid-2 { display: grid; gap: 20px; }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .card {
+      background: rgba(255,255,255,0.98);
+      color: var(--text);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+      border: 1px solid var(--line);
+    }
+    .dark .card {
+      background: rgba(255,255,255,0.08);
+      color: #f8fafc;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: none;
+    }
+    .kpi-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.75; margin-bottom: 12px; }
+    .kpi-value { font-size: 2.4rem; font-weight: 800; line-height: 1; margin-bottom: 10px; }
+    .kpi-note { font-size: 0.98rem; color: var(--muted); }
+    .dark .kpi-note { color: rgba(255,255,255,0.8); }
+    .bullets { margin: 0; padding-left: 1.2rem; }
+    .bullets li { margin: 0 0 14px; line-height: 1.5; font-size: 1.08rem; }
+    .bars { display: grid; gap: 16px; }
+    .bar-row { display: grid; grid-template-columns: 200px 1fr 90px; gap: 16px; align-items: center; }
+    .track { background: #dbe4f0; border-radius: 999px; height: 20px; overflow: hidden; }
+    .dark .track { background: rgba(255,255,255,0.12); }
+    .fill { height: 100%; border-radius: 999px; }
+    .fill.blue { background: linear-gradient(90deg, #60a5fa, #2563eb); }
+    .fill.orange { background: linear-gradient(90deg, #fdba74, #f97316); }
+    .fill.red { background: linear-gradient(90deg, #fca5a5, #dc2626); }
+    .fill.green { background: linear-gradient(90deg, #86efac, #16a34a); }
+    .callout {
+      margin-top: 28px;
+      border-left: 6px solid var(--accent2);
+      padding: 18px 20px;
+      background: rgba(249,115,22,0.08);
+      border-radius: 12px;
+      font-size: 1.08rem;
+      line-height: 1.6;
+    }
+    .dark .callout {
+      background: rgba(249,115,22,0.14);
+      border-left-color: #fb923c;
+    }
+    .footer-note { margin-top: 24px; font-size: 0.95rem; color: var(--muted); }
+    .dark .footer-note { color: rgba(255,255,255,0.72); }
+    @media (max-width: 960px) {
+      .slide { padding: 28px; }
+      h1 { font-size: 2.5rem; }
+      h2 { font-size: 1.8rem; }
+      .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { background: #fff; }
+      .slide { min-height: 100vh; }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide dark">
+      <div class="container">
+        <div class="eyebrow">Management presentation</div>
+        <h1>Booking Cancellation Risk</h1>
+        <p class="lead">Analysis of roughly 36,000 hotel bookings shows that about one in three bookings cancel. The commercial challenge is not simply demand volume, but demand quality — especially within long lead-time, online, first-time guest bookings.</p>
+        <div class="callout"><strong>CEO takeaway:</strong> Revenue risk is concentrated in long lead-time, online, first-time guest demand, while repeat guests and corporate bookings are materially more dependable.</div>
+        <div class="footer-note">Prepared for: Management team · Date: 22 Apr 2026</div>
+      </div>
+    </section>
+
+    <section class="slide light">
+      <div class="container">
+        <div class="eyebrow">Slide 2</div>
+        <h2>Headline KPIs</h2>
+        <div class="grid-4">
+          <article class="card">
+            <div class="kpi-label">Overall cancellation rate</div>
+            <div class="kpi-value">32.8%</div>
+            <div class="kpi-note">Equivalent to roughly 1 in 3 bookings canceling.</div>
+          </article>
+          <article class="card">
+            <div class="kpi-label">Highest-risk lead-time bucket</div>
+            <div class="kpi-value">73.9%</div>
+            <div class="kpi-note">Bookings made 181+ days in advance have the highest cancellation rate.</div>
+          </article>
+          <article class="card">
+            <div class="kpi-label">Online booking cancellation rate</div>
+            <div class="kpi-value">36.5%</div>
+            <div class="kpi-note">Higher than offline at 30.0% and far above corporate at 10.9%.</div>
+          </article>
+          <article class="card">
+            <div class="kpi-label">Repeat guest cancellation rate</div>
+            <div class="kpi-value">1.7%</div>
+            <div class="kpi-note">Repeat guests are highly reliable compared with 33.6% for first-time guests.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide light">
+      <div class="container">
+        <div class="eyebrow">Slide 3</div>
+        <h2>Risk profile</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Top business risks</h3>
+            <ul class="bullets">
+              <li>Long lead-time bookings create the largest pool of revenue uncertainty and cancellation exposure.</li>
+              <li>Online is the largest major demand source but also the weakest-quality major channel.</li>
+              <li>First-time guests are materially less dependable than repeat guests.</li>
+              <li>Low-intent bookings — such as those with no special requests — are much more likely to cancel.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Risk intensity view</h3>
+            <div class="bars">
+              <div class="bar-row">
+                <div>181+ day bookings</div>
+                <div class="track"><div class="fill red" style="width: 74%;"></div></div>
+                <div>73.9%</div>
+              </div>
+              <div class="bar-row">
+                <div>Online bookings</div>
+                <div class="track"><div class="fill orange" style="width: 36.5%;"></div></div>
+                <div>36.5%</div>
+              </div>
+              <div class="bar-row">
+                <div>Overall</div>
+                <div class="track"><div class="fill blue" style="width: 32.8%;"></div></div>
+                <div>32.8%</div>
+              </div>
+              <div class="bar-row">
+                <div>Corporate bookings</div>
+                <div class="track"><div class="fill green" style="width: 10.9%;"></div></div>
+                <div>10.9%</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide dark">
+      <div class="container">
+        <div class="eyebrow">Slide 4</div>
+        <h2>Management implications</h2>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Commercial impact</h3>
+            <p>Booking volume alone is not the right success metric. A significant share of future revenue is exposed because the weakest-quality demand sits in long lead-time online channels.</p>
+          </article>
+          <article class="card">
+            <h3>Operational implication</h3>
+            <p>Forecasting, overbooking, and inventory controls should be calibrated more aggressively around cancellation risk, especially in high-risk windows and channels.</p>
+          </article>
+          <article class="card">
+            <h3>Decision implication</h3>
+            <p>Management should prioritize improving booking quality by shifting toward repeat guests and corporate demand while applying stronger controls to high-risk online demand.</p>
+          </article>
+        </div>
+        <div class="callout"><strong>What leadership should focus on:</strong> Treat cancellation risk as a revenue-management lever, not just an operational metric. The largest upside comes from improving demand quality and acting earlier on high-risk bookings.</div>
+      </div>
+    </section>
+
+    <section class="slide light">
+      <div class="container">
+        <div class="eyebrow">Slide 5</div>
+        <h2>Recommended next steps</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Immediate actions</h3>
+            <ul class="bullets">
+              <li>Tighten overbooking and forecasting controls for long lead-time online bookings.</li>
+              <li>Track cancellation risk by channel, lead time, and guest type on a weekly basis.</li>
+              <li>Introduce simple business rules to flag high-risk bookings earlier in the booking cycle.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Follow-up actions</h3>
+            <ul class="bullets">
+              <li>Shift channel strategy toward higher-quality corporate and repeat-guest demand.</li>
+              <li>Use customer intent signals, such as special requests, in pricing and inventory decisions.</li>
+              <li>Measure improvement through reduced cancellation rates and stronger realized revenue conversion.</li>
+            </ul>
+          </article>
+        </div>
+        <div class="footer-note">Workflow note: for delegated execution, send action emails to Kishan at kishan@outlook.sg. For decision-maker deck delivery, share the hosted Render link to generalassemblysingapore@gmail.com.</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
